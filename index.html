@@ -1,20 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <link rel="stylesheet" href="./style/style.css">
     <title>Punts interes</title>
 </head>
-<body>
-    <div id="map"></div>
 
+<body>
+    <div class="main-container">
+        <div class="menu-main">
+            <h2>Puntos de Interés</h2>
+        
+            <!-- Filtros -->
+            <div class="filters">
+                <label for="filterTipo">Filtrar por tipo:</label>
+                <select id="filterTipo">
+                    <option value="tots">Tots</option>
+                </select>
+        
+                <label for="filterNombre">Buscar por nombre:</label>
+                <input type="text" id="filterNombre" placeholder="Buscar...">
+        
+                <label for="ordenarPuntos">Ordenar por:</label>
+                <select id="ordenarPuntos">
+                    <option value="asc">Ascendent</option>
+                    <option value="desc">Descendent</option>
+                </select>
+            </div>
+        
+            <!-- Tabla de puntos -->
+            <div class="list-container">
+                <p id="totalPuntos">Total: 0</p>
+                <div id="infoPais">
+                    <h3>Informació del País</h3>
+                    <div class="pais-container">
+                        <span id="ciutat">Ciutat: </span>
+                        <img id="banderaPais" src="" alt="Bandera" style="width: 30px; height: 20px; display: none;">
+                    </div>
+                </div>
+                
+                <table id="listaPuntos">
+                    <thead>
+                        <tr>
+                            <th>Ciudad</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Horaris</th>
+                            <th>Preu</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr id="sinDatos">
+                            <td colspan="4">No hay información a mostrar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Zona de carga -->
+            <div class="dropZone">Arrastra aquí tu CSV</div>
+            <button id="btnNetejarTot">Netejar Tot</button>
+        </div>
+        
+        <div id="map"></div>
+    </div>
+
+    <script src="./script/const.js"></script>
+    <script src="./script/PuntInteres.js"></script>
+    <script src="./script/Mapa.js"></script>
     <script src="./script/app.js"></script>
 </body>
+
 </html>
