@@ -38,13 +38,16 @@ class Mapa {
     }
     
 
-    borrarPunt(nombre) {
+    borrarPunt(nombre = null) {
         this.#map.eachLayer((layer) => {
-            if (layer instanceof L.Marker && layer.getPopup().getContent().includes(nombre)) {
-                this.#map.removeLayer(layer);
+            if (layer instanceof L.Marker) {
+                if (!nombre || layer.getPopup().getContent().includes(nombre)) {
+                    this.#map.removeLayer(layer);
+                }
             }
         });
     }
+    
 
     #getPosicioActual() {
         let lat = 41.3851;
